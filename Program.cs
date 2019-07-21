@@ -2,11 +2,34 @@
 
 namespace gb2cs
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+         
+            // for each line ... 
+            var gb3String = "Print \"truc\""; 
+            string instructionTranslated = "";
+            
+            char[] separators = { ' ', ';' };
+
+            string[] tokens = gb3String.Split(separators);
+
+            foreach(string token in tokens) {
+                string translation = "";
+                switch(token) {
+                    case "Print" : 
+                        translation += "Console.WriteLine()";
+                    break;
+                    default:
+                        translation += token;
+                    break;
+                }
+                instructionTranslated += translation;
+            }
+
+            Console.WriteLine(gb3String);
+            Console.WriteLine(instructionTranslated);
         }
     }
 }
